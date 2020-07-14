@@ -42,4 +42,4 @@ async def on_message(message):
     if message.content.startswith("!map"):
         await message.channel.send(file=discord.File("Hollow Knight Map.jpg"))      #attaching files 
        
-client.run('NTkyODgyOTU4NDc4ODY4NDkx.Xwoi9w.wCxIno4WdDJ3pDLtwyQSx1Hrssw')
+client.run('')
