@@ -1,17 +1,36 @@
 import discord
+from discord.ext import commands, tasks
+import pokebase as pb
 import random
 
 client = discord.Client()
 myUserId = 458474704001433610       #User id from discord, enable developer mode to see id's
 serverId = 592892913004969985       #Server id from discord
+channelId = 731606578901418056
 
 @client.event
 async def on_connect():
-    print('Bot has infiltrated the discord servers ÒwÓ')
-
+    print('Bot has infiltrated servers ÒwÓ')
 @client.event
 async def on_ready():
     print('Bot ready')
+
+@tasks.loop(minutes=30)
+async def repost():
+    random.seed()
+    message_channel = client.get_channel(channelId)
+    randomPoke = random.randint(1,700)
+    pokeName = pb.APIResource('pokemon',randomPoke).name
+    sprite = str(pb.APIResource('pokemon',randomPoke).sprites.front_default)     #URL for the sprite
+    embed = discord.Embed()
+    embed.set_image(url=sprite)
+    await message_channel.send(embed = embed)
+    print("Pokemon logged: " + pokeName)
+
+@repost.before_loop
+async def before():
+    await client.wait_until_ready()
+repost.start()
 
 @client.event
 async def on_message(message):
@@ -41,5 +60,13 @@ async def on_message(message):
     
     if message.content.startswith("!map"):
         await message.channel.send(file=discord.File("Hollow Knight Map.jpg"))      #attaching files 
+
+    if message.content.startswith('!sprite'):
+        random.seed()
+        sprite = str(pb.APIResource('pokemon',random.randint(1,500)).sprites.front_default)     #URL for the sprite
+        embed = discord.Embed()
+        embed.set_image(url=sprite)
+        await message.channel.send(embed = embed)   
+
        
 client.run(BOT_TOKEN)
