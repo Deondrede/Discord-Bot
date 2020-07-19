@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands, tasks
-import pokebase as pb
 import praw
 import random
 
