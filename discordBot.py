@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands, tasks
 import praw
-import random
 
 reddit = praw.Reddit(client_id=CLIENT_ID,client_secret=CLIENT_SECRET,password=PASSWORD,user_agent="DiscordConnection",username=USER)
 client = discord.Client()
