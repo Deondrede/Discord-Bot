@@ -3,7 +3,7 @@ from discord.ext import commands, tasks
 import praw
 import os
 
-reddit = praw.Reddit(client_id=os.getenv(CLIENT_ID),client_secret=os.getenv(CLIENT_SECRET),password=os.getenv(PASSWORD),user_agent="DiscordConnection",username=os.getenv(USERNAME)
+reddit = praw.Reddit(client_id=os.getenv(CLIENT_ID),client_secret=os.getenv(CLIENT_SECRET),password=os.getenv(PASSWORD),user_agent="DiscordConnection",username=os.getenv(USERNAME))
 client = discord.Client()
 subreddit = reddit.subreddit("funny")
 client = discord.Client()
