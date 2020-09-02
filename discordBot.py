@@ -5,8 +5,6 @@ import os
 
 reddit = praw.Reddit(client_id=os.getenv("CLIENT_ID"),client_secret=os.getenv("CLIENT_SECRET"),password=os.getenv("PASSWORD"),user_agent="DiscordConnection",username=os.getenv("USERNAME"))
 client = discord.Client()
-myUserId = 458474704001433610       #User id from discord, enable developer mode to see id's
-serverId = 592892913004969985
 subredditArray = []
 started = False
 messageChannel = 0
