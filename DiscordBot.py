@@ -1,6 +1,7 @@
 import discord
 from datetime import date
 from pathlib import WindowsPath
+import os
 
 lostSectors = []
 client = discord.Client()
@@ -20,4 +21,4 @@ async def on_message(message):
         arrayIndex = (date.today() - date(2020, 11, 11)).days
         await message.channel.send("```Legend: " + lostSectors[arrayIndex][0] + "\nMaster: " + lostSectors[arrayIndex][1] + "```")
 
-client.run('NTkyODgyOTU4NDc4ODY4NDkx.Xw0ogA.CQGRSo9uLFouc5ZbgmjdSB_ftcs')
+client.run(os.getenv("BOT_TOKEN"))
